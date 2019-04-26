@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <title>Watch my plant</title>
+        <style>
+            .line {
+                fill: none;
+                stroke: green;
+                stroke-width: 3px;
+            }
+            .habline {
+                fill: none;
+                stroke: orangered;
+                stroke-width: 3px;
+            }
+        </style>
+    </head>
+    <body>
+	    <div class="jumbotron text-center"><h1>Hi, check out my plants!</h1></div>
+        <div>These are time series graphs displaying the watering status of my chili plants over the last two days.
+             <br>The Y-axis is kind of arbitrary; it displays the raw ADC value from my sensor.
+	     <br>For the mystery chili this means that higher is drier, and for the habanero lower is drier.
+	     <br>The boards are hooked up differently, this is a work in progress.  
+             <br>
+             <br> For reference, between 400 and 600 is a healthy range, and 100 outside of these my plants are hurting :c</div>
+	<div><h2>Mystery chili</h2>
+	<div class="mystery_graph"></div>
+	</div>
+
+	<div><h2>Habanero chili</h2></div>
+	<div class="hab_graph"></div>
+        <script src="static/d3update.js"></script>
+    </body>
+</html>
