@@ -7,4 +7,4 @@ My watering system is a distributed network of devices communicating mostly over
 
 There are two sensors in the system currently, one communicating with the server directly over serial, and one running an ESP8266 sending data over a TCP socket.
 
-![Block diagram](doc/watering_system.png)
+<img src="doc/watering_system.png" width="394" height="583">
