@@ -1,5 +1,7 @@
 from SqlConnection import SqlConnection
 
+""" unit tests for the SQLConnection class. """
+
 def test_add_plants_and_read_them_back():
     plant_names = ["doot", "toot", "habanero", "foo", "bar"]
     sql = SqlConnection(":memory:")

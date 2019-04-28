@@ -9,6 +9,8 @@ from SqlConnection import SqlConnection
 HOST = '0.0.0.0'  # Standard loopback interface address (localhost)
 PORT = 7800        # Port to listen on (non-privileged ports are > 1023)
 
+
+# Create the server listener socket
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server_socket.bind((HOST, PORT))
@@ -16,10 +18,11 @@ server_socket.listen()
 
 
 def handle_client(client):
+""" Handle a connection from one sensor."""
     client.settimeout(10)
     while True:
         try:
-            data = client.recv(1024)
+            data = client.recv(1024) #Receive up to 1024 bytes. In reality a data package should be around 100, so this is excessive
         except socket.timeout:
             break
         if not data:
@@ -34,22 +37,8 @@ def handle_client(client):
            or "dryness" not in data_package:
             print("Invalid keys in data")
             break
-        save_data_sql(data_package)
-        client.sendall(data)
+        save_data_sql(data_package) # If we are reasonably sure we got a correct JSON package, save it to the database
 
-def save_data(data_package):
-    current_epoch_time = (datetime.now() - datetime(1970,1,1)).total_seconds()
-    now = datetime.now()
-    if '.' in data_package["name"]:
-        print("Name cannot contain dots")
-        return
-    path = "/home/pi/plant_data_test/%s" % data_package["name"]
-    if not os.path.exists(path):
-        os.mkdir(path)
-
-    f = open(path + "/%s-%s-%s.txt" % (now.year, now.month, now.day), 'a')
-    f.write("%s\t%s\n" % (current_epoch_time, data_package["dryness"]))
-    f.close()
 
 def save_data_sql(data_package):
     sql = SqlConnection()
@@ -63,4 +52,4 @@ if __name__ == "__main__":
     while True:
         client, addr = server_socket.accept()
         print('Connected by', addr)
-        threading.Thread(target=handle_client, args=(client,)).start()
+        threading.Thread(target=handle_client, args=(client,)).start() # Handle each client in a separate thread.

@@ -1,6 +1,8 @@
 import sqlite3
 import time
 
+""" This is a helper class that handles all connection to the database. Each daemon has its own, and theyre not necessarily the same. It depends on what that daemon has to do with the database. """
+
 class SqlConnection():
     def __init__(self, database_name = "../database.sqlite3"):
         self.conn = sqlite3.connect(database_name)

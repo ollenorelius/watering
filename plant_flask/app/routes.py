@@ -11,11 +11,13 @@ from app.SqlConnection import SqlConnection
 
 DATA_PATH = '/home/pi/watering/plant_data/'
 
+# Route to display the main page.
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
 
+# Route to get the data in the plant_data folder. This should be rewritten / removed
 @app.route('/plant_data', methods=['GET'])
 def get_plant_data():
     files = os.listdir(DATA_PATH)
@@ -34,6 +36,7 @@ def get_plant_data():
 
     return json.dumps(data)
 
+# Route to get plant data from the database.
 @app.route('/plant_data/<name>', methods=['GET'])
 def get_plant_data_sql(name):
     sql = SqlConnection("../database.sqlite3")

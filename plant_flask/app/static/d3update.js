@@ -1,3 +1,7 @@
+// This file is very messy because I am bad at JS
+// But basically it puts graphs in the main pages DOM using d3js
+// Graphs are currently hardcoded, I'll get around to changing this at some point...
+
 var margin = {top: 50, right:50, left: 50, bottom:50}
     width = 960 - margin.left - margin.right
     height = 500 - margin.top - margin.bottom
