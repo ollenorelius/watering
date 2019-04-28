@@ -1,5 +1,5 @@
 # watering
-My watering system for houseplants. Check it out at [pansartax.duckdns.org](https://pansartax.duckdns.org)!
+My watering system for houseplants. Check it out at [pansartax.duckdns.org](http://pansartax.duckdns.org)!
 
 
 ## Overview
