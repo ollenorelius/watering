@@ -5,7 +5,6 @@ from datetime import datetime
 
 ser = serial.Serial('/dev/ttyS0', 115200)  # open serial port
 current_day = -1
-f = None
 
 while True:
     value = ser.readline().strip().decode()     # read the number. This is blocking, so the program will spend most of its time here, waiting for input.

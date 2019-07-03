@@ -18,7 +18,7 @@ server_socket.listen()
 
 
 def handle_client(client):
-""" Handle a connection from one sensor."""
+    """ Handle a connection from one sensor."""
     client.settimeout(10)
     while True:
         try:
